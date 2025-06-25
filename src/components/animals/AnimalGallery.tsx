@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AnimalCard from './AnimalCard';
 import Modal from '../shared/Modal';
+import { motion } from 'framer-motion';
 
 interface Animal {
   id: number;
@@ -48,6 +49,20 @@ const animalsData: Animal[] = [
   },
 ];
 
+// Variantes para animação em cascata
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
+
 const AnimalGallery: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimal, setSelectedAnimal] = useState<Animal | null>(null);
@@ -64,13 +79,22 @@ const AnimalGallery: React.FC = () => {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-blue-900">Explore as Criaturas do Oceano</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {animalsData.map(animal => (
-          <div key={animal.id} onClick={() => handleCardClick(animal)}>
+          <motion.div
+            key={animal.id}
+            variants={itemVariants}
+            onClick={() => handleCardClick(animal)}
+          >
             <AnimalCard animal={animal} />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         {selectedAnimal && (
           <div className="flex flex-col items-center">

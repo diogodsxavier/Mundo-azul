@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../shared/Card';
 import Button from '../shared/Button';
+import { motion } from 'framer-motion';
 
 interface QuizQuestion {
   question: string;
@@ -11,16 +12,16 @@ interface QuizQuestion {
 const allQuizData = {
   // --- NÍVEL FÁCIL (4-7 anos) ---
   easy: [
-    { question: "Qual destes é o Peixe-Palhaço?", options: ['https://source.unsplash.com/featured/?clownfish', 'https://source.unsplash.com/featured/?shark', 'https://source.unsplash.com/featured/?octopus', 'https://source.unsplash.com/featured/?turtle'], correctAnswer: 'https://source.unsplash.com/featured/?clownfish' },
-    { question: "Onde está a Tartaruga Marinha?", options: ['https://source.unsplash.com/featured/?dolphin', 'https://source.unsplash.com/featured/?seaturtle', 'https://source.unsplash.com/featured/?crab', 'https://source.unsplash.com/featured/?whale'], correctAnswer: 'https://source.unsplash.com/featured/?seaturtle' },
-    { question: "Aponte para o Golfinho!", options: ['https://source.unsplash.com/featured/?jellyfish', 'https://source.unsplash.com/featured/?starfish', 'https://source.unsplash.com/featured/?dolphin', 'https://source.unsplash.com/featured/?seahorse'], correctAnswer: 'https://source.unsplash.com/featured/?dolphin' },
-    { question: "Qual imagem mostra um Tubarão?", options: ['https://source.unsplash.com/featured/?shark', 'https://source.unsplash.com/featured/?coralreef', 'https://source.unsplash.com/featured/?stingray', 'https://source.unsplash.com/featured/?lobster'], correctAnswer: 'https://source.unsplash.com/featured/?shark' },
-    { question: "Encontre o Polvo.", options: ['https://source.unsplash.com/featured/?squid', 'https://source.unsplash.com/featured/?octopus', 'https://source.unsplash.com/featured/?shrimp', 'https://source.unsplash.com/featured/?seal'], correctAnswer: 'https://source.unsplash.com/featured/?octopus' },
-    { question: "Este é um Cavalo-Marinho. Qual deles?", options: ['https://source.unsplash.com/featured/?walrus', 'https://source.unsplash.com/featured/?penguin', 'https://source.unsplash.com/featured/?seahorse', 'https://source.unsplash.com/featured/?otter'], correctAnswer: 'https://source.unsplash.com/featured/?seahorse' },
-    { question: "Mostre o Caranguejo!", options: ['https://source.unsplash.com/featured/?crab', 'https://source.unsplash.com/featured/?fish', 'https://source.unsplash.com/featured/?anemone', 'https://source.unsplash.com/featured/?clam'], correctAnswer: 'https://source.unsplash.com/featured/?crab' },
-    { question: "Qual destes é a majestosa Baleia?", options: ['https://source.unsplash.com/featured/?whale', 'https://source.unsplash.com/featured/?seagull', 'https://source.unsplash.com/featured/?pelican', 'https://source.unsplash.com/featured/?seaurchin'], correctAnswer: 'https://source.unsplash.com/featured/?whale' },
-    { question: "Onde está a Estrela-do-Mar?", options: ['https://source.unsplash.com/featured/?eel', 'https://source.unsplash.com/featured/?starfish', 'https://source.unsplash.com/featured/?seaweed', 'https://source.unsplash.com/featured/?pufferfish'], correctAnswer: 'https://source.unsplash.com/featured/?starfish' },
-    { question: "Aponte para a Água-Viva.", options: ['https://source.unsplash.com/featured/?coral', 'https://source.unsplash.com/featured/?seashell', 'https://source.unsplash.com/featured/?jellyfish', 'https://source.unsplash.com/featured/?dolphin'], correctAnswer: 'https://source.unsplash.com/featured/?jellyfish' }
+    { question: "Qual destes é o Peixe-Palhaço?", options: ['https://source.unsplash.com/featured/?clownfish&sig=1', 'https://source.unsplash.com/featured/?shark&sig=2', 'https://source.unsplash.com/featured/?octopus&sig=3', 'https://source.unsplash.com/featured/?turtle&sig=4'], correctAnswer: 'https://source.unsplash.com/featured/?clownfish&sig=1' },
+    { question: "Onde está a Tartaruga Marinha?", options: ['https://source.unsplash.com/featured/?dolphin&sig=5', 'https://source.unsplash.com/featured/?seaturtle&sig=6', 'https://source.unsplash.com/featured/?crab&sig=7', 'https://source.unsplash.com/featured/?whale&sig=8'], correctAnswer: 'https://source.unsplash.com/featured/?seaturtle&sig=6' },
+    { question: "Aponte para o Golfinho!", options: ['https://source.unsplash.com/featured/?jellyfish&sig=9', 'https://source.unsplash.com/featured/?starfish&sig=10', 'https://source.unsplash.com/featured/?dolphin&sig=11', 'https://source.unsplash.com/featured/?seahorse&sig=12'], correctAnswer: 'https://source.unsplash.com/featured/?dolphin&sig=11' },
+    { question: "Qual imagem mostra um Tubarão?", options: ['https://source.unsplash.com/featured/?shark&sig=13', 'https://source.unsplash.com/featured/?coralreef&sig=14', 'https://source.unsplash.com/featured/?stingray&sig=15', 'https://source.unsplash.com/featured/?lobster&sig=16'], correctAnswer: 'https://source.unsplash.com/featured/?shark&sig=13' },
+    { question: "Encontre o Polvo.", options: ['https://source.unsplash.com/featured/?squid&sig=17', 'https://source.unsplash.com/featured/?octopus&sig=18', 'https://source.unsplash.com/featured/?shrimp&sig=19', 'https://source.unsplash.com/featured/?seal&sig=20'], correctAnswer: 'https://source.unsplash.com/featured/?octopus&sig=18' },
+    { question: "Este é um Cavalo-Marinho. Qual deles?", options: ['https://source.unsplash.com/featured/?walrus&sig=21', 'https://source.unsplash.com/featured/?penguin&sig=22', 'https://source.unsplash.com/featured/?seahorse&sig=23', 'https://source.unsplash.com/featured/?otter&sig=24'], correctAnswer: 'https://source.unsplash.com/featured/?seahorse&sig=23' },
+    { question: "Mostre o Caranguejo!", options: ['https://source.unsplash.com/featured/?crab&sig=25', 'https://source.unsplash.com/featured/?fish&sig=26', 'https://source.unsplash.com/featured/?anemone&sig=27', 'https://source.unsplash.com/featured/?clam&sig=28'], correctAnswer: 'https://source.unsplash.com/featured/?crab&sig=25' },
+    { question: "Qual destes é a majestosa Baleia?", options: ['https://source.unsplash.com/featured/?whale&sig=29', 'https://source.unsplash.com/featured/?seagull&sig=30', 'https://source.unsplash.com/featured/?pelican&sig=31', 'https://source.unsplash.com/featured/?seaurchin&sig=32'], correctAnswer: 'https://source.unsplash.com/featured/?whale&sig=29' },
+    { question: "Onde está a Estrela-do-Mar?", options: ['https://source.unsplash.com/featured/?eel&sig=33', 'https://source.unsplash.com/featured/?starfish&sig=34', 'https://source.unsplash.com/featured/?seaweed&sig=35', 'https://source.unsplash.com/featured/?pufferfish&sig=36'], correctAnswer: 'https://source.unsplash.com/featured/?starfish&sig=34' },
+    { question: "Aponte para a Água-Viva.", options: ['https://source.unsplash.com/featured/?coral&sig=37', 'https://source.unsplash.com/featured/?seashell&sig=38', 'https://source.unsplash.com/featured/?jellyfish&sig=39', 'https://source.unsplash.com/featured/?dolphin&sig=40'], correctAnswer: 'https://source.unsplash.com/featured/?jellyfish&sig=39' }
   ],
   // --- NÍVEL MÉDIO (8-12 anos) ---
   medium: [
@@ -49,6 +50,25 @@ const allQuizData = {
     { question: "Qual o propósito da 'Linha Lateral' nos peixes?", options: ['Ajuda na flutuação', 'É um órgão sensorial para detectar movimento e vibração na água', 'Serve para atrair parceiros', 'Produz veneno'], correctAnswer: 'É um órgão sensorial para detectar movimento e vibração na água' }
   ]
 };
+
+// Componente auxiliar para opções de imagem
+interface ImageOptionButtonProps {
+  imageUrl: string;
+  onClick: () => void;
+  disabled: boolean;
+  className?: string;
+}
+
+const ImageOptionButton: React.FC<ImageOptionButtonProps> = ({ imageUrl, onClick, disabled, className }) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    className={`border-2 rounded-lg overflow-hidden focus:outline-none transition-transform duration-200 hover:scale-105 ${className}`}
+    style={{ padding: 0, background: 'none' }}
+  >
+    <img src={imageUrl} alt="Opção do quiz" className="w-full h-40 object-cover rounded-lg" />
+  </button>
+);
 
 const QuizGame: React.FC = () => {
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
@@ -137,36 +157,49 @@ const QuizGame: React.FC = () => {
         <h3 className="text-lg font-bold mb-4">{currentQuestion.question}</h3>
         <div className="grid grid-cols-2 gap-4 mb-4">
           {currentQuestion.options.map(option => {
+            const isImageOption = option.startsWith('http');
             let btnClass = '';
             if (selectedAnswer) {
               if (option === selectedAnswer) {
                 btnClass = option === currentQuestion.correctAnswer ? 'bg-green-500 text-white' : 'bg-red-500 text-white';
               }
             }
-            const isImage = option.startsWith('http');
-            if (isImage) {
+            // Definir animação de feedback
+            let motionProps = {};
+            if (selectedAnswer && option === selectedAnswer) {
+              if (option === currentQuestion.correctAnswer) {
+                motionProps = {
+                  animate: { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
+                };
+              } else {
+                motionProps = {
+                  animate: { x: [-5, 5, -5, 5, 0], transition: { duration: 0.4 } }
+                };
+              }
+            }
+            if (isImageOption) {
               return (
-                <button
-                  key={option}
-                  onClick={() => handleAnswerClick(option)}
-                  disabled={!!selectedAnswer}
-                  className={`border-2 rounded-lg overflow-hidden focus:outline-none transition-transform duration-200 hover:scale-105 ${btnClass}`}
-                  style={{ padding: 0, background: 'none' }}
-                >
-                  <img src={option} alt="Opção do quiz" className="w-full h-28 object-cover" />
-                </button>
+                <motion.div key={option} {...motionProps}>
+                  <ImageOptionButton
+                    imageUrl={option}
+                    onClick={() => handleAnswerClick(option)}
+                    disabled={!!selectedAnswer}
+                    className={btnClass}
+                  />
+                </motion.div>
               );
             }
             return (
-              <Button
-                key={option}
-                variant="secondary"
-                className={btnClass}
-                onClick={() => handleAnswerClick(option)}
-                disabled={!!selectedAnswer}
-              >
-                {option}
-              </Button>
+              <motion.div key={option} {...motionProps}>
+                <Button
+                  variant="secondary"
+                  className={btnClass}
+                  onClick={() => handleAnswerClick(option)}
+                  disabled={!!selectedAnswer}
+                >
+                  {option}
+                </Button>
+              </motion.div>
             );
           })}
         </div>

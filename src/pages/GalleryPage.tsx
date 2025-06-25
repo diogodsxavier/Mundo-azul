@@ -1,3 +1,10 @@
 import AnimalGallery from '../components/animals/AnimalGallery';
-const GalleryPage = () => <AnimalGallery />;
-export default GalleryPage;
+import PageLayout from '../components/shared/PageLayout';
+
+export default function GalleryPage() {
+  return (
+    <PageLayout>
+      <AnimalGallery />
+    </PageLayout>
+  );
+}

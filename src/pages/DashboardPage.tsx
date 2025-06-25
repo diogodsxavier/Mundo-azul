@@ -1,3 +1,10 @@
 import AgentsDashboard from '../components/dashboard/AgentsDashboard';
-const DashboardPage = () => <AgentsDashboard />;
-export default DashboardPage;
+import PageLayout from '../components/shared/PageLayout';
+
+export default function DashboardPage() {
+  return (
+    <PageLayout>
+      <AgentsDashboard />
+    </PageLayout>
+  );
+}

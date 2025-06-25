@@ -1,3 +1,10 @@
 import QuizGame from '../components/quiz/QuizGame';
-const QuizPage = () => <QuizGame />;
-export default QuizPage;
+import PageLayout from '../components/shared/PageLayout';
+
+export default function QuizPage() {
+  return (
+    <PageLayout>
+      <QuizGame />
+    </PageLayout>
+  );
+}
