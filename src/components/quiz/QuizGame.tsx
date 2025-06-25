@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Card from '../shared/Card';
 import Button from '../shared/Button';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 
 const allQuizData = {
@@ -72,6 +73,7 @@ const QuizGame: React.FC = () => {
   const [showResults, setShowResults] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const navigate = useNavigate();
 
   const currentQuestions = difficulty ? allQuizData[difficulty] : [];
 
@@ -133,12 +135,13 @@ const QuizGame: React.FC = () => {
 
   if (showResults) {
     return (
-      <div className="flex justify-center items-center min-h-[300px]">
+      <div className="flex flex-col justify-center items-center min-h-[300px] gap-4">
         <Card className="w-full max-w-lg text-center">
           <h2 className="text-2xl font-bold mb-4">Quiz Concluído!</h2>
           <p className="mb-6">Você acertou {score} de {currentQuestions.length} perguntas.</p>
           <Button variant="primary" onClick={restartGame}>Jogar Novamente</Button>
         </Card>
+        <Button variant="secondary" onClick={() => navigate('/dashboard')}>Sair do Questionário</Button>
       </div>
     );
   }
@@ -146,11 +149,11 @@ const QuizGame: React.FC = () => {
   const currentQuestion = currentQuestions[currentQuestionIndex];
 
   return (
-    <div className="flex justify-center items-center min-h-[300px]">
+    <div className="flex flex-col justify-center items-center min-h-[300px] gap-4">
       <Card className="w-full max-w-lg">
         <div className="mb-2 text-sm text-gray-500">Pergunta {currentQuestionIndex + 1} de {currentQuestions.length}</div>
         <h3 className="text-lg font-bold mb-4">{currentQuestion.question}</h3>
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-2 gap-4 mb-4 items-stretch">
           {currentQuestion.options.map(option => {
             const isImageOption = option.startsWith('http');
             let btnClass = '';
@@ -174,21 +177,21 @@ const QuizGame: React.FC = () => {
             }
             if (isImageOption) {
               return (
-                <motion.div key={option} {...motionProps}>
+                <motion.div key={option} {...motionProps} className="h-full">
                   <ImageOptionButton
                     imageUrl={option}
                     onClick={() => handleAnswerClick(option)}
                     disabled={!!selectedAnswer}
-                    className={btnClass}
+                    className={`w-full h-full ${btnClass}`}
                   />
                 </motion.div>
               );
             }
             return (
-              <motion.div key={option} {...motionProps}>
+              <motion.div key={option} {...motionProps} className="h-full">
                 <Button
                   variant="secondary"
-                  className={btnClass}
+                  className={`w-full h-full flex justify-center items-center ${btnClass}`}
                   onClick={() => handleAnswerClick(option)}
                   disabled={!!selectedAnswer}
                 >
@@ -204,6 +207,7 @@ const QuizGame: React.FC = () => {
           </div>
         )}
       </Card>
+      <Button variant="secondary" onClick={() => navigate('/dashboard')}>Sair do Questionário</Button>
     </div>
   );
 };

@@ -6,10 +6,14 @@ Mundo Azul é uma aplicação web educacional e interativa voltada para criança
 O projeto oferece uma experiência gamificada, com missões diárias, quiz de perguntas sobre o oceano, galeria de animais marinhos e um sistema de ranking e coleção. A interface é moderna, responsiva e utiliza uma paleta de cores inspirada no oceano.
 
 ## 🚀 Funcionalidades Principais
+- **Modal de Boas-Vindas Personalizado**: Ao acessar o app, o usuário informa nome e idade, personalizando a experiência.
+- **Contexto Global de Usuário**: Dados do usuário (nome e idade) são salvos e persistidos, permitindo personalização em todo o app.
+- **Dashboard Adaptativo**: Estrutura pronta para dashboards diferentes conforme a idade do usuário (atualmente exibe o dashboard padrão para todos).
 - **Dashboard**: Exibe perfil do usuário, missões diárias e extras, progresso na enciclopédia marinha, ranking de usuários e coleção de animais.
-- **Galeria de Animais**: Visualize e explore diferentes espécies marinhas, com imagens, habitats e curiosidades.
-- **Quiz Interativo**: Jogo de perguntas e respostas sobre o oceano, dividido em três níveis de dificuldade (Fácil, Médio e Difícil), com feedback imediato e pontuação.
+- **Galeria de Animais**: Visualize e explore diferentes espécies marinhas, com imagens, habitats e curiosidades. Cards animados em cascata.
+- **Quiz Interativo**: Jogo de perguntas e respostas sobre o oceano, dividido em três níveis de dificuldade (Fácil, Médio e Difícil), com feedback animado e pontuação.
 - **Navegação intuitiva**: Barra de navegação para acesso rápido ao Dashboard, Galeria e Quiz.
+- **Animações com Framer Motion**: Transições de página, feedback visual no quiz e animação em cascata na galeria.
 
 ## 🗂️ Estrutura de Pastas
 ```
@@ -19,8 +23,9 @@ Mundo-azul/
 │   │   ├── animals/         # Galeria e cards de animais
 │   │   ├── dashboard/       # Dashboard do usuário
 │   │   ├── quiz/            # Jogo de perguntas
-│   │   └── shared/          # Componentes reutilizáveis (Button, Card, Modal, Navbar, ProgressBar)
-│   ├── pages/               # Páginas principais (Dashboard, Galeria, Quiz)
+│   │   └── shared/          # Componentes reutilizáveis (Button, Card, Modal, Navbar, ProgressBar, WelcomeModal)
+│   ├── context/             # Contexto global do usuário
+│   ├── pages/               # Páginas principais (Dashboard, Galeria, Quiz, AdaptiveDashboardPage)
 │   ├── styles/              # Tema e estilos globais
 │   ├── assets/              # Imagens e recursos estáticos
 │   ├── App.tsx              # Definição das rotas e layout principal
@@ -38,7 +43,7 @@ Mundo-azul/
 - **TypeScript**: Tipagem estática para maior robustez.
 - **Vite**: Bundler e servidor de desenvolvimento rápido.
 - **Tailwind CSS**: Utilitários para estilização moderna e responsiva.
-- **Framer Motion**: Animações fluidas e acessíveis.
+- **Framer Motion**: Animações fluidas e acessíveis (transições de página, quiz, galeria).
 - **Lucide React**: Ícones SVG modernos.
 - **React Router DOM**: Gerenciamento de rotas SPA.
 - **ESLint**: Padronização e qualidade de código.
@@ -47,6 +52,7 @@ Mundo-azul/
 - **Button**: Botão estilizado, com variantes primária e secundária.
 - **Card**: Container visual para agrupar conteúdos.
 - **Modal**: Janela modal animada para exibir detalhes ou informações.
+- **WelcomeModal**: Modal de boas-vindas para personalização do usuário.
 - **Navbar**: Barra de navegação superior.
 - **ProgressBar**: Barra de progresso para indicar conquistas.
 

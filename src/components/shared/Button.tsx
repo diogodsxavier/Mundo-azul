@@ -20,8 +20,8 @@ const Button: React.FC<ButtonProps> = ({
 
   const variantClasses =
     variant === 'primary'
-      ? 'bg-[#4A90E2] text-[#FFFFFF]'
-      : 'border-2 border-[#4A90E2] text-[#4A90E2]';
+      ? 'bg-[#4A90E2] text-white'
+      : 'bg-transparent border-2 border-[#4A90E2] text-[#4A90E2]';
 
   return (
     <button

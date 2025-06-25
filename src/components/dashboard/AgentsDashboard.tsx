@@ -58,12 +58,16 @@ const AgentsDashboard: React.FC = () => {
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {/* Profile Header */}
         <div className="lg:col-span-3 flex items-center gap-6 bg-white rounded-xl p-6 shadow-md mb-2">
-          <div className="w-20 h-20 rounded-full bg-[#4A90E2] flex items-center justify-center text-4xl text-white font-bold">
-            {user?.name ? user.name.charAt(0) : ''}
-          </div>
-          <div>
-            <div className="font-bold text-2xl">{user?.name}</div>
-            <div className="font-light text-sm text-gray-500">{userData.level}</div>
+          <div className="flex items-center gap-4 flex-1">
+            <img
+              src="public/logo-mundo-azul.png"
+              alt="Logo Mundo Azul"
+              className="w-16 h-16 object-contain rounded-full bg-[#4A90E2]"
+            />
+            <div className="flex-1">
+              <div className="font-bold text-2xl truncate">{user?.name}</div>
+              <div className="font-light text-sm text-gray-500">{userData.level}</div>
+            </div>
           </div>
           <div className="ml-auto flex items-center gap-2">
             <span className="text-yellow-500 text-2xl">🐚</span>
