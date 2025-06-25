@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Card from '../shared/Card';
 import Button from '../shared/Button';
 import ProgressBar from '../shared/ProgressBar';
+import { useUser } from '../../context/UserContext';
 
 const dummyUser = {
   name: 'Marina Silva',
@@ -44,6 +45,8 @@ const dummyCollection = [
 ];
 
 const AgentsDashboard: React.FC = () => {
+  const userContext = useUser();
+  const user = userContext?.user;
   const [userData] = useState(dummyUser);
   const [missions] = useState(dummyMissions);
   const [leaderboardData] = useState(dummyLeaderboard);
@@ -56,10 +59,10 @@ const AgentsDashboard: React.FC = () => {
         {/* Profile Header */}
         <div className="lg:col-span-3 flex items-center gap-6 bg-white rounded-xl p-6 shadow-md mb-2">
           <div className="w-20 h-20 rounded-full bg-[#4A90E2] flex items-center justify-center text-4xl text-white font-bold">
-            {userData.name.charAt(0)}
+            {user?.name ? user.name.charAt(0) : ''}
           </div>
           <div>
-            <div className="font-bold text-2xl">{userData.name}</div>
+            <div className="font-bold text-2xl">{user?.name}</div>
             <div className="font-light text-sm text-gray-500">{userData.level}</div>
           </div>
           <div className="ml-auto flex items-center gap-2">
