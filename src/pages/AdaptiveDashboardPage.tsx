@@ -3,7 +3,8 @@ import { useUser } from '../context/UserContext';
 import AgentsDashboard from '../components/dashboard/AgentsDashboard';
 
 const AdaptiveDashboardPage: React.FC = () => {
-  const { user } = useUser();
+  const userContext = useUser();
+  const user = userContext?.user;
   if (!user) return null;
   return <AgentsDashboard />;
 };
