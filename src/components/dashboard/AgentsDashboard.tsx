@@ -60,7 +60,7 @@ const AgentsDashboard: React.FC = () => {
         <div className="lg:col-span-3 flex items-center gap-6 bg-white rounded-xl p-6 shadow-md mb-2">
           <div className="flex items-center gap-4 flex-1">
             <img
-              src='img/logo-mundo-azul.png'
+              src="/logo-mundo-azul.png"
               alt="Logo Mundo Azul"
               className="w-16 h-16 object-contain rounded-full bg-[#4A90E2]"
             />
