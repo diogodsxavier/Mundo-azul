@@ -3,11 +3,6 @@ import Card from '../shared/Card';
 import Button from '../shared/Button';
 import { motion } from 'framer-motion';
 
-interface QuizQuestion {
-  question: string;
-  options: string[];
-  correctAnswer: string;
-}
 
 const allQuizData = {
   // --- NÍVEL FÁCIL (4-7 anos) ---

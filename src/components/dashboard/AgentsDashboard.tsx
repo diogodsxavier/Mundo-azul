@@ -107,7 +107,7 @@ const AgentsDashboard: React.FC = () => {
           <Card>
             <h3 className="font-semibold text-xl mb-4">Ranking da Expedição</h3>
             <ol className="list-decimal list-inside space-y-1">
-              {leaderboardData.map((player, idx) => (
+              {leaderboardData.map((player) => (
                 <li key={player.name} className="flex justify-between">
                   <span>{player.name}</span>
                   <span className="font-semibold">{player.points} pts</span>
