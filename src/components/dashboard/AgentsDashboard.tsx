@@ -47,6 +47,8 @@ const dummyCollection = [
 const AgentsDashboard: React.FC = () => {
   const userContext = useUser();
   const user = userContext?.user;
+  const fullName = user?.name || 'Explorador';
+  const firstName = fullName.split(' ')[0];
   const [userData] = useState(dummyUser);
   const [missions] = useState(dummyMissions);
   const [leaderboardData] = useState(dummyLeaderboard);
@@ -67,7 +69,10 @@ const AgentsDashboard: React.FC = () => {
                   className="w-16 h-16 object-contain rounded-full bg-[#4A90E2]"
                 />
                 <div>
-                  <div className="font-bold text-2xl truncate break-all">{user?.name}</div>
+                  <h2 className="text-xl font-bold text-gray-800 break-all">
+                    <span className="md:hidden">{firstName}</span>
+                    <span className="hidden md:inline">{fullName}</span>
+                  </h2>
                   <div className="font-light text-sm text-gray-500">{userData.level}</div>
                 </div>
               </div>
