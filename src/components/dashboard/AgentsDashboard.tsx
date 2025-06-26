@@ -59,17 +59,19 @@ const AgentsDashboard: React.FC = () => {
         {/* Card de Perfil */}
         <div className="lg:col-span-4">
           <Card>
-            <div className="flex items-center gap-4">
-              <img
-                src="/logo-mundo-azul.png"
-                alt="Logo Mundo Azul"
-                className="w-16 h-16 object-contain rounded-full bg-[#4A90E2]"
-              />
-              <div className="flex-1">
-                <div className="font-bold text-2xl truncate break-all">{user?.name}</div>
-                <div className="font-light text-sm text-gray-500">{userData.level}</div>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+              <div className="flex items-center gap-4 flex-1">
+                <img
+                  src="/logo-mundo-azul.png"
+                  alt="Logo Mundo Azul"
+                  className="w-16 h-16 object-contain rounded-full bg-[#4A90E2]"
+                />
+                <div>
+                  <div className="font-bold text-2xl truncate break-all">{user?.name}</div>
+                  <div className="font-light text-sm text-gray-500">{userData.level}</div>
+                </div>
               </div>
-              <div className="ml-auto flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <span className="text-yellow-500 text-2xl">🐚</span>
                 <span className="font-semibold text-lg">{userData.coins}</span>
               </div>
