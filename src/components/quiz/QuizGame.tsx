@@ -148,7 +148,7 @@ const QuizGame: React.FC = () => {
             </Button>
             <Button
               variant="secondary"
-              className="w-full text-[#38A169] hover:border-[#38A169]"
+              className="w-full text-[#3182CE] hover:border-[#3182CE]"
               onClick={() => setDifficulty('medium')}
             >
               Médio (8-12 anos)
