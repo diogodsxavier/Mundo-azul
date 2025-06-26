@@ -77,6 +77,27 @@ const QuizGame: React.FC = () => {
 
   const currentQuestions = difficulty ? allQuizData[difficulty] : [];
 
+  // Função auxiliar para determinar a classe do botão de resposta
+  const getButtonClass = (option: string) => {
+    if (!selectedAnswer) {
+      return 'secondary'; // Estilo padrão antes de qualquer resposta
+    }
+
+    const isCorrect = option === currentQuestions[currentQuestionIndex].correctAnswer;
+    const isSelected = option === selectedAnswer;
+
+    if (isCorrect) {
+      return 'bg-green-500 text-white border-green-500'; // Resposta correta sempre fica verde
+    }
+
+    if (isSelected && !isCorrect) {
+      return 'bg-red-500 text-white border-red-500'; // Resposta selecionada e errada fica vermelha
+    }
+
+    // Para opções não selecionadas após uma resposta ter sido dada
+    return 'secondary opacity-50';
+  };
+
   const handleAnswerClick = (answer: string) => {
     if (selectedAnswer) return;
     setSelectedAnswer(answer);
@@ -118,13 +139,25 @@ const QuizGame: React.FC = () => {
         <Card className="w-full max-w-lg text-center">
           <h2 className="text-2xl font-bold mb-6">Escolha seu Nível de Desafio</h2>
           <div className="flex flex-col gap-4">
-            <Button variant="secondary" className="bg-green-200 text-green-800 hover:bg-green-300" onClick={() => setDifficulty('easy')}>
+            <Button
+              variant="secondary"
+              className="w-full text-[#38A169] hover:border-[#38A169]"
+              onClick={() => setDifficulty('easy')}
+            >
               Fácil (4-7 anos)
             </Button>
-            <Button variant="secondary" className="bg-yellow-200 text-yellow-800 hover:bg-yellow-300" onClick={() => setDifficulty('medium')}>
+            <Button
+              variant="secondary"
+              className="w-full"
+              onClick={() => setDifficulty('medium')}
+            >
               Médio (8-12 anos)
             </Button>
-            <Button variant="secondary" className="bg-red-200 text-red-800 hover:bg-red-300" onClick={() => setDifficulty('hard')}>
+            <Button
+              variant="secondary"
+              className="w-full text-[#E53E3E] hover:border-[#E53E3E]"
+              onClick={() => setDifficulty('hard')}
+            >
               Difícil (13-16 anos)
             </Button>
           </div>
@@ -156,12 +189,7 @@ const QuizGame: React.FC = () => {
         <div className="grid grid-cols-2 gap-4 mb-4 items-stretch">
           {currentQuestion.options.map(option => {
             const isImageOption = option.startsWith('http');
-            let btnClass = '';
-            if (selectedAnswer) {
-              if (option === selectedAnswer) {
-                btnClass = option === currentQuestion.correctAnswer ? 'bg-green-500 text-white' : 'bg-red-500 text-white';
-              }
-            }
+            const variantClasses = getButtonClass(option);
             // Definir animação de feedback
             let motionProps = {};
             if (selectedAnswer && option === selectedAnswer) {
@@ -182,7 +210,7 @@ const QuizGame: React.FC = () => {
                     imageUrl={option}
                     onClick={() => handleAnswerClick(option)}
                     disabled={!!selectedAnswer}
-                    className={`w-full h-full ${btnClass}`}
+                    className={`w-full h-full ${variantClasses.startsWith('bg-') ? variantClasses : ''}`}
                   />
                 </motion.div>
               );
@@ -190,10 +218,10 @@ const QuizGame: React.FC = () => {
             return (
               <motion.div key={option} {...motionProps} className="h-full">
                 <Button
-                  variant="secondary"
-                  className={`w-full h-full flex justify-center items-center ${btnClass}`}
                   onClick={() => handleAnswerClick(option)}
                   disabled={!!selectedAnswer}
+                  className={`w-full h-full flex justify-center items-center ${variantClasses.startsWith('bg-') ? variantClasses : ''}`}
+                  variant={variantClasses === 'secondary' || variantClasses.includes('opacity-50') ? 'secondary' : 'primary'}
                 >
                   {option}
                 </Button>
