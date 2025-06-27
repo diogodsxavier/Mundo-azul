@@ -3,7 +3,6 @@ import Card from '../shared/Card';
 import Button from '../shared/Button';
 import ProgressBar from '../shared/ProgressBar';
 import { useUser } from '../../context/UserContext';
-import type { AchievementID } from '../../context/UserContext';
 import { Swords, Star, BookOpen, ShieldCheck, Layers, Globe2 } from 'lucide-react';
 
 const dummyUser = {
@@ -165,7 +164,7 @@ const AgentsDashboard: React.FC = () => {
         </div>
 
         {/* Cards Missão Extra */}
-        {missions.filter(m => !m.isDaily).map((mission, idx) => (
+        {missions.filter(m => !m.isDaily).map((mission) => (
           <div key={mission.id} className="col-span-12 lg:col-span-6 h-full">
             <Card className="mb-2 h-full">
               <h3 className="font-semibold text-lg mb-1">{mission.title}</h3>
