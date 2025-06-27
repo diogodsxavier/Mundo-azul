@@ -86,4 +86,4 @@ Este projeto está licenciado sob a Licença MIT. Veja o arquivo [LICENSE](LICEN
 
 ---
 
-Desenvolvido por Diogo Xavier e colaboradores. Para dúvidas ou sugestões, abra uma issue ou entre em contato.
+Desenvolvido por Diogo Daniel Silva Xavier. Para dúvidas ou sugestões, abra uma issue ou entre em contato.
