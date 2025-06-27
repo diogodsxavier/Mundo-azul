@@ -293,49 +293,51 @@ const QuizGame: React.FC = () => {
     <div className="flex flex-col justify-center items-center min-h-[300px] gap-4">
       <Card className="w-full max-w-lg">
         <div className="mb-2 text-sm text-gray-500">Pergunta {currentQuestionIndex + 1} de {currentQuestions.length}</div>
-        <h3 className="text-lg font-bold mb-4">{currentQuestion.question}</h3>
+        <h3 className="text-lg font-bold mb-4">{currentQuestion?.question}</h3>
         <div className="grid grid-cols-2 gap-4 mb-4 items-stretch">
-          {currentQuestion.options.map(option => {
-            const isImageOption = option.startsWith('http');
-            const variantClasses = getButtonClass(option);
-            // Definir animação de feedback
-            let motionProps = {};
-            if (selectedAnswer && option === selectedAnswer) {
-              if (option === currentQuestion.correctAnswer) {
-                motionProps = {
-                  animate: { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
-                };
-              } else {
-                motionProps = {
-                  animate: { x: [-5, 5, -5, 5, 0], transition: { duration: 0.4 } }
-                };
+          {currentQuestion && currentQuestion.options && currentQuestion.options.length > 0 && (
+            currentQuestion.options.map(option => {
+              const isImageOption = option.startsWith('http');
+              const variantClasses = getButtonClass(option);
+              // Definir animação de feedback
+              let motionProps = {};
+              if (selectedAnswer && option === selectedAnswer) {
+                if (option === currentQuestion.correctAnswer) {
+                  motionProps = {
+                    animate: { scale: [1, 1.05, 1], transition: { duration: 0.3 } }
+                  };
+                } else {
+                  motionProps = {
+                    animate: { x: [-5, 5, -5, 5, 0], transition: { duration: 0.4 } }
+                  };
+                }
               }
-            }
-            if (isImageOption) {
+              if (isImageOption) {
+                return (
+                  <motion.div key={option} {...motionProps} className="h-full">
+                    <ImageOptionButton
+                      imageUrl={option}
+                      onClick={() => handleAnswerClick(option)}
+                      disabled={!!selectedAnswer}
+                      className={`w-full h-full ${variantClasses.startsWith('bg-') ? variantClasses : ''}`}
+                    />
+                  </motion.div>
+                );
+              }
               return (
                 <motion.div key={option} {...motionProps} className="h-full">
-                  <ImageOptionButton
-                    imageUrl={option}
+                  <Button
                     onClick={() => handleAnswerClick(option)}
                     disabled={!!selectedAnswer}
-                    className={`w-full h-full ${variantClasses.startsWith('bg-') ? variantClasses : ''}`}
-                  />
+                    className={`w-full h-full flex justify-center items-center ${variantClasses.startsWith('bg-') ? variantClasses : ''}`}
+                    variant={variantClasses === 'secondary' || variantClasses.includes('opacity-50') ? 'secondary' : 'primary'}
+                  >
+                    {option}
+                  </Button>
                 </motion.div>
               );
-            }
-            return (
-              <motion.div key={option} {...motionProps} className="h-full">
-                <Button
-                  onClick={() => handleAnswerClick(option)}
-                  disabled={!!selectedAnswer}
-                  className={`w-full h-full flex justify-center items-center ${variantClasses.startsWith('bg-') ? variantClasses : ''}`}
-                  variant={variantClasses === 'secondary' || variantClasses.includes('opacity-50') ? 'secondary' : 'primary'}
-                >
-                  {option}
-                </Button>
-              </motion.div>
-            );
-          })}
+            })
+          )}
         </div>
         {feedbackMessage && (
           <div className="text-center text-lg font-semibold mt-2">

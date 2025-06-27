@@ -82,15 +82,19 @@ const AnimalGallery: React.FC = () => {
         initial="hidden"
         animate="visible"
       >
-        {animalsData.map(animal => (
-          <motion.div
-            key={animal.id}
-            variants={itemVariants}
-            onClick={() => handleCardClick(animal)}
-          >
-            <AnimalCard animal={animal} />
-          </motion.div>
-        ))}
+        {animalsData && animalsData.length > 0 ? (
+          animalsData.map(animal => (
+            <motion.div
+              key={animal.id}
+              variants={itemVariants}
+              onClick={() => handleCardClick(animal)}
+            >
+              <AnimalCard animal={animal} />
+            </motion.div>
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500">Nenhum animal encontrado.</p>
+        )}
       </motion.div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         {selectedAnimal && (

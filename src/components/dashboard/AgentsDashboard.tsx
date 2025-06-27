@@ -103,9 +103,10 @@ const AgentsDashboard: React.FC = () => {
                 <p className="text-sm text-gray-500">Nenhuma medalha conquistada ainda.</p>
                 <p className="text-sm text-gray-400 mt-1">Jogue os quizzes e explore a galeria de animais para começar a sua coleção!</p>
               </div>
-            ) : (
+            ) : null}
+            {user && user.achievements && user.achievements.length > 0 && (
               <div className="flex flex-wrap gap-4 mt-2">
-                {user?.achievements.map((achievementId) => {
+                {user.achievements.map((achievementId) => {
                   const data = achievementsList[achievementId];
                   return (
                     <div key={achievementId} className="flex flex-col items-center w-20">
