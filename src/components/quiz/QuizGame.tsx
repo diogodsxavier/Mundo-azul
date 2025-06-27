@@ -231,21 +231,21 @@ const QuizGame: React.FC = () => {
           <div className="flex flex-col gap-4">
             <Button
               variant="secondary"
-              className="w-full text-[#38A169] hover:border-[#38A169]"
+              className="w-full text-green-600 hover:border-green-600"
               onClick={() => setDifficulty('easy')}
             >
               Fácil (4-7 anos)
             </Button>
             <Button
               variant="secondary"
-              className="w-full text-[#3182CE] hover:border-[#3182CE]"
+              className="w-full text-blue-600 hover:border-blue-600"
               onClick={() => setDifficulty('medium')}
             >
               Médio (8-12 anos)
             </Button>
             <Button
               variant="secondary"
-              className="w-full text-[#E53E3E] hover:border-[#E53E3E]"
+              className="w-full text-red-600 hover:border-red-600"
               onClick={() => setDifficulty('hard')}
             >
               Difícil (13-16 anos)
