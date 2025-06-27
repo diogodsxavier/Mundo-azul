@@ -8,16 +8,106 @@ import { useNavigate } from 'react-router-dom';
 const allQuizData = {
   // --- NÍVEL FÁCIL (4-7 anos) ---
   easy: [
-    { question: "Qual destes é o Peixe-Palhaço?", options: ['https://source.unsplash.com/featured/?clownfish&sig=1', 'https://source.unsplash.com/featured/?shark&sig=2', 'https://source.unsplash.com/featured/?octopus&sig=3', 'https://source.unsplash.com/featured/?turtle&sig=4'], correctAnswer: 'https://source.unsplash.com/featured/?clownfish&sig=1' },
-    { question: "Onde está a Tartaruga Marinha?", options: ['https://source.unsplash.com/featured/?dolphin&sig=5', 'https://source.unsplash.com/featured/?seaturtle&sig=6', 'https://source.unsplash.com/featured/?crab&sig=7', 'https://source.unsplash.com/featured/?whale&sig=8'], correctAnswer: 'https://source.unsplash.com/featured/?seaturtle&sig=6' },
-    { question: "Aponte para o Golfinho!", options: ['https://source.unsplash.com/featured/?jellyfish&sig=9', 'https://source.unsplash.com/featured/?starfish&sig=10', 'https://source.unsplash.com/featured/?dolphin&sig=11', 'https://source.unsplash.com/featured/?seahorse&sig=12'], correctAnswer: 'https://source.unsplash.com/featured/?dolphin&sig=11' },
-    { question: "Qual imagem mostra um Tubarão?", options: ['https://source.unsplash.com/featured/?shark&sig=13', 'https://source.unsplash.com/featured/?coralreef&sig=14', 'https://source.unsplash.com/featured/?stingray&sig=15', 'https://source.unsplash.com/featured/?lobster&sig=16'], correctAnswer: 'https://source.unsplash.com/featured/?shark&sig=13' },
-    { question: "Encontre o Polvo.", options: ['https://source.unsplash.com/featured/?squid&sig=17', 'https://source.unsplash.com/featured/?octopus&sig=18', 'https://source.unsplash.com/featured/?shrimp&sig=19', 'https://source.unsplash.com/featured/?seal&sig=20'], correctAnswer: 'https://source.unsplash.com/featured/?octopus&sig=18' },
-    { question: "Este é um Cavalo-Marinho. Qual deles?", options: ['https://source.unsplash.com/featured/?walrus&sig=21', 'https://source.unsplash.com/featured/?penguin&sig=22', 'https://source.unsplash.com/featured/?seahorse&sig=23', 'https://source.unsplash.com/featured/?otter&sig=24'], correctAnswer: 'https://source.unsplash.com/featured/?seahorse&sig=23' },
-    { question: "Mostre o Caranguejo!", options: ['https://source.unsplash.com/featured/?crab&sig=25', 'https://source.unsplash.com/featured/?fish&sig=26', 'https://source.unsplash.com/featured/?anemone&sig=27', 'https://source.unsplash.com/featured/?clam&sig=28'], correctAnswer: 'https://source.unsplash.com/featured/?crab&sig=25' },
-    { question: "Qual destes é a majestosa Baleia?", options: ['https://source.unsplash.com/featured/?whale&sig=29', 'https://source.unsplash.com/featured/?seagull&sig=30', 'https://source.unsplash.com/featured/?pelican&sig=31', 'https://source.unsplash.com/featured/?seaurchin&sig=32'], correctAnswer: 'https://source.unsplash.com/featured/?whale&sig=29' },
-    { question: "Onde está a Estrela-do-Mar?", options: ['https://source.unsplash.com/featured/?eel&sig=33', 'https://source.unsplash.com/featured/?starfish&sig=34', 'https://source.unsplash.com/featured/?seaweed&sig=35', 'https://source.unsplash.com/featured/?pufferfish&sig=36'], correctAnswer: 'https://source.unsplash.com/featured/?starfish&sig=34' },
-    { question: "Aponte para a Água-Viva.", options: ['https://source.unsplash.com/featured/?coral&sig=37', 'https://source.unsplash.com/featured/?seashell&sig=38', 'https://source.unsplash.com/featured/?jellyfish&sig=39', 'https://source.unsplash.com/featured/?dolphin&sig=40'], correctAnswer: 'https://source.unsplash.com/featured/?jellyfish&sig=39' }
+    {
+      question: "Qual destes é o Peixe-Palhaço?",
+      options: [
+        "https://www.drta-archiv.de/wp-content/uploads/2021/07/1280px-Falsche_Clownfisch_Amphiprion_ocellaris1.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/1/13/DuskyDolphin.jpg",
+        "https://i.pinimg.com/originals/07/44/2e/07442e6730fff401a27999f8c77a729f.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Total_internal_reflection_of_Chelonia_mydas.jpg/440px-Total_internal_reflection_of_Chelonia_mydas.jpg"
+      ],
+      correctAnswer: "https://www.drta-archiv.de/wp-content/uploads/2021/07/1280px-Falsche_Clownfisch_Amphiprion_ocellaris1.jpg"
+    },
+    {
+      question: "Aponte para a Tartaruga Marinha!",
+      options: [
+        "https://live.staticflickr.com/2854/10187203744_64987ecfd8_b.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Total_internal_reflection_of_Chelonia_mydas.jpg/440px-Total_internal_reflection_of_Chelonia_mydas.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/3/31/Great_white_shark_south_africa.jpg",
+        "https://faunanews.com.br/wp-content/uploads/2024/01/caranguejo-amarelo-Marcio-Camargo-Araujo-Joao.webp"
+      ],
+      correctAnswer: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Total_internal_reflection_of_Chelonia_mydas.jpg/440px-Total_internal_reflection_of_Chelonia_mydas.jpg"
+    },
+    {
+      question: "Onde está o Golfinho?",
+      options: [
+        "https://www.pbs.org/wnet/nature/files/2018/11/jeffrey-hamilton-747470-unsplash-1280x720.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/1/13/DuskyDolphin.jpg",
+        "http://media.tumblr.com/tumblr_l8vs7l833R1qcj0q0.gif",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Humpback_Whale_underwater_shot.jpg/350px-Humpback_Whale_underwater_shot.jpg"
+      ],
+      correctAnswer: "https://upload.wikimedia.org/wikipedia/commons/1/13/DuskyDolphin.jpg"
+    },
+    {
+      question: "Qual imagem mostra um Tubarão?",
+      options: [
+        "https://i.pinimg.com/originals/07/44/2e/07442e6730fff401a27999f8c77a729f.jpg",
+        "https://www.drta-archiv.de/wp-content/uploads/2021/07/1280px-Falsche_Clownfisch_Amphiprion_ocellaris1.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/3/31/Great_white_shark_south_africa.jpg",
+        "https://live.staticflickr.com/2854/10187203744_64987ecfd8_b.jpg"
+      ],
+      correctAnswer: "https://upload.wikimedia.org/wikipedia/commons/3/31/Great_white_shark_south_africa.jpg"
+    },
+    {
+      question: "Encontre o Polvo!",
+      options: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Humpback_Whale_underwater_shot.jpg/350px-Humpback_Whale_underwater_shot.jpg",
+        "https://i.pinimg.com/originals/07/44/2e/07442e6730fff401a27999f8c77a729f.jpg",
+        "https://faunanews.com.br/wp-content/uploads/2024/01/caranguejo-amarelo-Marcio-Camargo-Araujo-Joao.webp",
+        "https://upload.wikimedia.org/wikipedia/commons/1/13/DuskyDolphin.jpg"
+      ],
+      correctAnswer: "https://i.pinimg.com/originals/07/44/2e/07442e6730fff401a27999f8c77a729f.jpg"
+    },
+    {
+      question: "Qual destes é o Cavalo-Marinho?",
+      options: [
+        "http://media.tumblr.com/tumblr_l8vs7l833R1qcj0q0.gif",
+        "https://www.pbs.org/wnet/nature/files/2018/11/jeffrey-hamilton-747470-unsplash-1280x720.jpg",
+        "https://live.staticflickr.com/2854/10187203744_64987ecfd8_b.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Total_internal_reflection_of_Chelonia_mydas.jpg/440px-Total_internal_reflection_of_Chelonia_mydas.jpg"
+      ],
+      correctAnswer: "https://live.staticflickr.com/2854/10187203744_64987ecfd8_b.jpg"
+    },
+    {
+      question: "Aponte para o Caranguejo!",
+      options: [
+        "https://upload.wikimedia.org/wikipedia/commons/3/31/Great_white_shark_south_africa.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/1/13/DuskyDolphin.jpg",
+        "https://www.drta-archiv.de/wp-content/uploads/2021/07/1280px-Falsche_Clownfisch_Amphiprion_ocellaris1.jpg",
+        "https://faunanews.com.br/wp-content/uploads/2024/01/caranguejo-amarelo-Marcio-Camargo-Araujo-Joao.webp"
+      ],
+      correctAnswer: "https://faunanews.com.br/wp-content/uploads/2024/01/caranguejo-amarelo-Marcio-Camargo-Araujo-Joao.webp"
+    },
+    {
+      question: "Onde está a majestosa Baleia?",
+      options: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Humpback_Whale_underwater_shot.jpg/350px-Humpback_Whale_underwater_shot.jpg",
+        "https://i.pinimg.com/originals/07/44/2e/07442e6730fff401a27999f8c77a729f.jpg",
+        "https://live.staticflickr.com/2854/10187203744_64987ecfd8_b.jpg",
+        "http://media.tumblr.com/tumblr_l8vs7l833R1qcj0q0.gif"
+      ],
+      correctAnswer: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Humpback_Whale_underwater_shot.jpg/350px-Humpback_Whale_underwater_shot.jpg"
+    },
+    {
+      question: "Qual destes é a Estrela-do-Mar?",
+      options: [
+        "https://www.pbs.org/wnet/nature/files/2018/11/jeffrey-hamilton-747470-unsplash-1280x720.jpg",
+        "http://media.tumblr.com/tumblr_l8vs7l833R1qcj0q0.gif",
+        "https://upload.wikimedia.org/wikipedia/commons/1/13/DuskyDolphin.jpg",
+        "https://faunanews.com.br/wp-content/uploads/2024/01/caranguejo-amarelo-Marcio-Camargo-Araujo-Joao.webp"
+      ],
+      correctAnswer: "http://media.tumblr.com/tumblr_l8vs7l833R1qcj0q0.gif"
+    },
+    {
+      question: "Encontre a Água-Viva!",
+      options: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Total_internal_reflection_of_Chelonia_mydas.jpg/440px-Total_internal_reflection_of_Chelonia_mydas.jpg",
+        "https://www.drta-archiv.de/wp-content/uploads/2021/07/1280px-Falsche_Clownfisch_Amphiprion_ocellaris1.jpg",
+        "https://www.pbs.org/wnet/nature/files/2018/11/jeffrey-hamilton-747470-unsplash-1280x720.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/3/31/Great_white_shark_south_africa.jpg"
+      ],
+      correctAnswer: "https://www.pbs.org/wnet/nature/files/2018/11/jeffrey-hamilton-747470-unsplash-1280x720.jpg"
+    }
   ],
   // --- NÍVEL MÉDIO (8-12 anos) ---
   medium: [
@@ -106,7 +196,7 @@ const QuizGame: React.FC = () => {
       setScore(prev => prev + 1);
       setFeedbackMessage('Correto! 🎉');
     } else {
-      setFeedbackMessage(`Quase! A resposta certa era "${currentQuestions[currentQuestionIndex].correctAnswer}".`);
+      setFeedbackMessage(`Quase!`);
     }
     setTimeout(() => {
       nextQuestion();
