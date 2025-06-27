@@ -3,6 +3,7 @@ import Card from '../shared/Card';
 import Button from '../shared/Button';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
 
 
 const allQuizData = {
@@ -164,6 +165,7 @@ const QuizGame: React.FC = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState('');
   const navigate = useNavigate();
+  const { unlockAchievement } = useUser() || {};
 
   const currentQuestions = difficulty ? allQuizData[difficulty] : [];
 
@@ -192,12 +194,22 @@ const QuizGame: React.FC = () => {
     if (selectedAnswer) return;
     setSelectedAnswer(answer);
     const isCorrect = answer === currentQuestions[currentQuestionIndex].correctAnswer;
+    let newScore = score;
     if (isCorrect) {
-      setScore(prev => prev + 1);
+      newScore++;
+    }
+    const isLastQuestion = currentQuestionIndex === currentQuestions.length - 1;
+    if (isLastQuestion) {
+      if (unlockAchievement && difficulty === 'easy' && newScore === currentQuestions.length) {
+        unlockAchievement('PERFECT_EASY_QUIZ');
+      }
+    }
+    if (isCorrect) {
       setFeedbackMessage('Correto! 🎉');
     } else {
       setFeedbackMessage(`Quase!`);
     }
+    setScore(newScore);
     setTimeout(() => {
       nextQuestion();
     }, 2000);
@@ -214,6 +226,12 @@ const QuizGame: React.FC = () => {
   };
 
   const restartGame = () => {
+    if (unlockAchievement) {
+      unlockAchievement('FIRST_QUIZ');
+      if (difficulty === 'easy' && score === currentQuestions.length) {
+        unlockAchievement('PERFECT_EASY_QUIZ');
+      }
+    }
     setCurrentQuestionIndex(0);
     setScore(0);
     setShowResults(false);

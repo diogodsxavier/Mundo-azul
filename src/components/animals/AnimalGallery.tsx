@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AnimalCard from './AnimalCard';
 import Modal from '../shared/Modal';
 import { motion } from 'framer-motion';
+import { useUser } from '../../context/UserContext';
 
 interface Animal {
   id: number;
@@ -53,6 +54,15 @@ const itemVariants = {
 const AnimalGallery: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAnimal, setSelectedAnimal] = useState<Animal | null>(null);
+  const userContext = useUser();
+  const user = userContext?.user;
+  const unlockAchievement = userContext?.unlockAchievement;
+
+  useEffect(() => {
+    if (user && unlockAchievement && animalsData.length >= 10) {
+      unlockAchievement('TEN_ANIMALS');
+    }
+  }, [user, unlockAchievement]);
 
   const handleCardClick = (animal: Animal) => {
     setSelectedAnimal(animal);

@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="bg-[#F8F9FA] min-h-screen">
       <Navbar />
-      <main className="p-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
