@@ -7,13 +7,15 @@ O projeto oferece uma experiência gamificada, com missões diárias, quiz de pe
 
 ## 🚀 Funcionalidades Principais
 - **Modal de Boas-Vindas Personalizado**: Ao acessar o app, o usuário informa nome e idade, personalizando a experiência.
-- **Contexto Global de Usuário**: Dados do usuário (nome e idade) são salvos e persistidos, permitindo personalização em todo o app.
+- **Contexto Global de Usuário Robusto**: Dados do usuário (nome, idade e conquistas) são salvos e persistidos, com verificações para garantir que nunca haja dados indefinidos, tornando o app mais seguro e confiável.
+- **Sistema de Conquistas**: Usuários desbloqueiam conquistas ao realizar ações como acertar quizzes ou explorar a galeria. O sistema é reativo e imutável, garantindo feedback imediato e seguro.
 - **Dashboard Adaptativo**: Estrutura pronta para dashboards diferentes conforme a idade do usuário (atualmente exibe o dashboard padrão para todos).
-- **Dashboard**: Exibe perfil do usuário, missões diárias e extras, progresso na enciclopédia marinha, ranking de usuários e coleção de animais.
-- **Galeria de Animais**: Visualize e explore diferentes espécies marinhas, com imagens, habitats e curiosidades. Cards animados em cascata.
-- **Quiz Interativo**: Jogo de perguntas e respostas sobre o oceano, dividido em três níveis de dificuldade (Fácil, Médio e Difícil), com feedback animado e pontuação.
+- **Dashboard**: Exibe perfil do usuário, missões diárias e extras, progresso na enciclopédia marinha, ranking de usuários e coleção de animais, além de conquistas desbloqueadas.
+- **Galeria de Animais**: Visualize e explore diferentes espécies marinhas, com imagens, habitats e curiosidades. Cards animados em cascata. Inclui busca por nome e filtro por status de conservação, com lógica defensiva para evitar erros com dados indefinidos.
+- **Quiz Interativo**: Jogo de perguntas e respostas sobre o oceano, dividido em três níveis de dificuldade (Fácil, Médio e Difícil), com feedback animado, pontuação e conquistas.
 - **Navegação intuitiva**: Barra de navegação para acesso rápido ao Dashboard, Galeria e Quiz.
 - **Animações com Framer Motion**: Transições de página, feedback visual no quiz e animação em cascata na galeria.
+- **Mensagens para estados vazios**: UX aprimorada, exibindo mensagens amigáveis quando não há animais ou conquistas a mostrar.
 
 ## 🗂️ Estrutura de Pastas
 ```
@@ -24,7 +26,7 @@ Mundo-azul/
 │   │   ├── dashboard/       # Dashboard do usuário
 │   │   ├── quiz/            # Jogo de perguntas
 │   │   └── shared/          # Componentes reutilizáveis (Button, Card, Modal, Navbar, ProgressBar, WelcomeModal)
-│   ├── context/             # Contexto global do usuário
+│   ├── context/             # Contexto global do usuário (robusto e seguro)
 │   ├── pages/               # Páginas principais (Dashboard, Galeria, Quiz, AdaptiveDashboardPage)
 │   ├── styles/              # Tema e estilos globais
 │   ├── assets/              # Imagens e recursos estáticos
