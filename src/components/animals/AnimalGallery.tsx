@@ -61,7 +61,7 @@ const AnimalGallery: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('Todos');
 
   useEffect(() => {
-    if (user && unlockAchievement && animalsData.length >= 10) {
+    if (user && unlockAchievement) {
       unlockAchievement('TEN_ANIMALS');
     }
   }, [user, unlockAchievement]);

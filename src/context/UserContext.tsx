@@ -20,8 +20,14 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem('mundoAzulUser');
-    if (savedUser) setUser(JSON.parse(savedUser));
+    const savedUserJSON = localStorage.getItem('mundoAzulUser');
+    if (savedUserJSON) {
+      const savedUser = JSON.parse(savedUserJSON);
+      if (!savedUser.achievements) {
+        savedUser.achievements = [];
+      }
+      setUser(savedUser);
+    }
   }, []);
 
   const login = (name: string, age: number) => {
