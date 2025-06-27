@@ -21,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="bg-white rounded-xl shadow-2xl p-6 relative w-full max-w-2xl"
+            className="bg-white rounded-xl shadow-2xl p-6 relative w-full max-w-2xl mx-4"
             onClick={(e: React.MouseEvent) => e.stopPropagation()}
           >
             <button
