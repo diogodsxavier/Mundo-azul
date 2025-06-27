@@ -95,6 +95,27 @@ const AnimalGallery: React.FC = () => {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-blue-900">Explore as Criaturas do Oceano</h1>
+      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center mb-4">
+        <input
+          type="text"
+          placeholder="Buscar animal..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+          className="p-2 border rounded w-full max-w-xs"
+        />
+        <select
+          value={activeFilter}
+          onChange={e => setActiveFilter(e.target.value)}
+          className="p-2 border rounded"
+        >
+          <option value="Todos">Todos</option>
+          <option value="Pouco Preocupante">Pouco Preocupante</option>
+          <option value="Ameaçada">Ameaçada</option>
+          <option value="Vulnerável">Vulnerável</option>
+          <option value="Variado">Variado</option>
+          <option value="Quase Ameaçado">Quase Ameaçado</option>
+        </select>
+      </div>
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6"
         variants={containerVariants}
