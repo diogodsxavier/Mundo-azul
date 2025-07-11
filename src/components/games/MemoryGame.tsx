@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardFlip from 'react-card-flip';
+import FlippableCard from '../shared/FlippableCard';
 import { animalsData } from '../animals/AnimalGallery';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
@@ -114,20 +114,13 @@ const MemoryGame: React.FC = () => {
           <span className="text-lg">Jogadas: <b>{moves}</b></span>
         </div>
         <div className="grid grid-cols-4 gap-4">
-          {cards.map((card, idx) => {
-            const isFlipped = isPreviewing || flippedIndices.includes(idx) || matchedIds.includes(card.id);
-            return (
-              <CardFlip isFlipped={isFlipped} flipDirection="horizontal" key={card.uniqueId}>
-                {/* Verso */}
-                <div
-                  className="bg-blue-200 flex items-center justify-center rounded-lg h-32 cursor-pointer border-2 border-blue-300"
-                  onClick={() => !isPreviewing && handleCardClick(idx)}
-                  style={{ minHeight: 120 }}
-                >
-                  <img src="/logo-mundo-azul.png" alt="Mundo Azul" className="w-12 h-12 opacity-80" />
-                </div>
-                {/* Frente */}
-                <div className="bg-white flex flex-col items-center justify-center rounded-lg h-32 border-2 border-blue-300">
+          {cards.map((card, index) => (
+            <FlippableCard
+              key={card.uniqueId}
+              isFlipped={isPreviewing || flippedIndices.includes(index) || matchedIds.includes(card.id)}
+              onClick={() => !isPreviewing && handleCardClick(index)}
+              frontContent={
+                <div className="bg-white flex flex-col items-center justify-center rounded-lg h-32 border-2 border-blue-300 w-full h-full">
                   <img
                     src={card.imageUrl}
                     alt={card.name}
@@ -135,9 +128,14 @@ const MemoryGame: React.FC = () => {
                   />
                   <span className="text-xs text-blue-900 font-semibold mt-1">{card.name}</span>
                 </div>
-              </CardFlip>
-            );
-          })}
+              }
+              backContent={
+                <div className="w-full h-full flex items-center justify-center bg-blue-200 rounded-lg h-32 border-2 border-blue-300">
+                  <img src="/logo-mundo-azul.png" alt="Logo Mundo Azul" className="w-12 h-12 opacity-80" />
+                </div>
+              }
+            />
+          ))}
         </div>
         {/* Modal de vitória */}
         {isGameWon && (
