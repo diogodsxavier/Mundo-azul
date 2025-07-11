@@ -113,28 +113,29 @@ const MemoryGame: React.FC = () => {
           <h2 className="text-2xl font-bold text-blue-900">Jogo da Memória</h2>
           <span className="text-lg">Jogadas: <b>{moves}</b></span>
         </div>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-4 w-full max-w-lg mx-auto">
           {cards.map((card, index) => (
-            <FlippableCard
-              key={card.uniqueId}
-              isFlipped={isPreviewing || flippedIndices.includes(index) || matchedIds.includes(card.id)}
-              onClick={() => !isPreviewing && handleCardClick(index)}
-              frontContent={
-                <div className="bg-white flex flex-col items-center justify-center rounded-lg h-32 border-2 border-blue-300 w-full h-full">
-                  <img
-                    src={card.imageUrl}
-                    alt={card.name}
-                    className="w-20 h-20 object-cover rounded"
-                  />
-                  <span className="text-xs text-blue-900 font-semibold mt-1">{card.name}</span>
-                </div>
-              }
-              backContent={
-                <div className="w-full h-full flex items-center justify-center bg-blue-200 rounded-lg h-32 border-2 border-blue-300">
-                  <img src="/logo-mundo-azul.png" alt="Logo Mundo Azul" className="w-12 h-12 opacity-80" />
-                </div>
-              }
-            />
+            <div key={card.uniqueId} className="aspect-square">
+              <FlippableCard
+                isFlipped={isPreviewing || flippedIndices.includes(index) || matchedIds.includes(card.id)}
+                onClick={() => !isPreviewing && handleCardClick(index)}
+                frontContent={
+                  <div className="bg-white flex flex-col items-center justify-center rounded-lg border-2 border-blue-300 w-full h-full">
+                    <img
+                      src={card.imageUrl}
+                      alt={card.name}
+                      className="w-20 h-20 object-cover rounded"
+                    />
+                    <span className="text-xs text-blue-900 font-semibold mt-1">{card.name}</span>
+                  </div>
+                }
+                backContent={
+                  <div className="w-full h-full flex items-center justify-center bg-blue-200 rounded-lg border-2 border-blue-300">
+                    <img src="/logo-mundo-azul.png" alt="Logo Mundo Azul" className="w-12 h-12 opacity-80" />
+                  </div>
+                }
+              />
+            </div>
           ))}
         </div>
         {/* Modal de vitória */}

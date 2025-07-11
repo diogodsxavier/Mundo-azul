@@ -15,7 +15,7 @@ const FlippableCard: React.FC<FlippableCardProps> = ({ isFlipped, frontContent, 
       style={{ perspective: 1000 }}
       onClick={onClick}
     >
-      <div style={{ position: 'relative', width: '100%', height: '100%', transformStyle: 'preserve-3d' }}>
+      <div style={{ position: 'relative', width: '100%', height: '100%', transformStyle: 'preserve-3d' }} className="w-full h-full">
         <AnimatePresence initial={false} mode="wait">
           {!isFlipped && (
             <motion.div
@@ -25,6 +25,7 @@ const FlippableCard: React.FC<FlippableCardProps> = ({ isFlipped, frontContent, 
               exit={{ rotateY: -90 }}
               transition={{ duration: 0.3 }}
               style={{ position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden' }}
+              className="w-full h-full"
             >
               {backContent}
             </motion.div>
@@ -37,6 +38,7 @@ const FlippableCard: React.FC<FlippableCardProps> = ({ isFlipped, frontContent, 
               exit={{ rotateY: 90 }}
               transition={{ duration: 0.3 }}
               style={{ position: 'absolute', width: '100%', height: '100%', backfaceVisibility: 'hidden', zIndex: 2 }}
+              className="w-full h-full"
             >
               {frontContent}
             </motion.div>
