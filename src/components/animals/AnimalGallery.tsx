@@ -77,19 +77,18 @@ const AnimalGallery: React.FC = () => {
 
   const filteredAnimals = animalsData
     .filter((animal) => {
-      // GARANTE que o nome do animal existe e é uma string antes de filtrar
-      const nameMatch = animal.name && typeof animal.name === 'string' &&
-                        animal.name.toLowerCase().includes(searchTerm.toLowerCase());
-      return nameMatch;
+      // Filtro de Busca por Nome
+      // Garante que tanto o nome do animal quanto o termo de busca existam e os compara em minúsculas.
+      return animal.name?.toLowerCase().includes(searchTerm?.toLowerCase() ?? '');
     })
     .filter((animal) => {
-      // GARANTE que o filtro ativo não é 'Todos' e que o status existe antes de filtrar
+      // Filtro por Categoria (Status de Conservação)
+      // Se o filtro ativo for 'Todos', retorna verdadeiro para todos os animais.
       if (activeFilter === 'Todos') {
-        return true; // Se o filtro for 'Todos', não filtra nada nesta etapa
+        return true;
       }
-      const filterMatch = animal.conservationStatus && typeof animal.conservationStatus === 'string' &&
-                            animal.conservationStatus === activeFilter;
-      return filterMatch;
+      // Senão, compara o status de conservação com o filtro ativo.
+      return animal.conservationStatus === activeFilter;
     });
 
   return (
@@ -116,14 +115,14 @@ const AnimalGallery: React.FC = () => {
           <option value="Quase Ameaçado">Quase Ameaçado</option>
         </select>
       </div>
-      <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {filteredAnimals && filteredAnimals.length > 0 ? (
-          filteredAnimals.map(animal => (
+      {filteredAnimals.length > 0 ? (
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {filteredAnimals.map(animal => (
             <motion.div
               key={animal.id}
               variants={itemVariants}
@@ -131,11 +130,11 @@ const AnimalGallery: React.FC = () => {
             >
               <AnimalCard animal={animal} />
             </motion.div>
-          ))
-        ) : (
-          <p className="col-span-full text-center text-gray-500">Nenhum animal encontrado.</p>
-        )}
-      </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        <p className="text-center text-gray-500 mt-8">Nenhum animal encontrado com esses filtros. Tente uma nova busca!</p>
+      )}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         {selectedAnimal && (
           <div className="flex flex-col items-center">
@@ -157,4 +156,5 @@ const AnimalGallery: React.FC = () => {
 };
 
 export default AnimalGallery;
+export { animalsData };
  

@@ -345,7 +345,7 @@ const QuizGame: React.FC = () => {
           </div>
         )}
       </Card>
-      <Button variant="secondary" onClick={() => navigate('/dashboard')}>Sair do Questionário</Button>
+      <Button variant="secondary" onClick={() => navigate('/jogos')}>Sair do Questionário</Button>
     </div>
   );
 };

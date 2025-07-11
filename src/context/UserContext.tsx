@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
-export type AchievementID = 'FIRST_QUIZ' | 'PERFECT_EASY_QUIZ' | 'TEN_ANIMALS' | 'CONSERVATION_GUARDIAN' | 'ALL_DIFFICULTIES' | 'SEVEN_SEAS_VETERAN';
+export type AchievementID = 'FIRST_QUIZ' | 'PERFECT_EASY_QUIZ' | 'TEN_ANIMALS' | 'CONSERVATION_GUARDIAN' | 'ALL_DIFFICULTIES' | 'SEVEN_SEAS_VETERAN' | 'MEMORY_MASTER';
 
 interface User {
   name: string;

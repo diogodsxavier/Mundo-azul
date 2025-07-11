@@ -3,7 +3,7 @@ import Card from '../shared/Card';
 import Button from '../shared/Button';
 import ProgressBar from '../shared/ProgressBar';
 import { useUser } from '../../context/UserContext';
-import { Swords, Star, BookOpen, ShieldCheck, Layers, Globe2 } from 'lucide-react';
+import { Swords, Star, BookOpen, ShieldCheck, Layers, Globe2, BrainCircuit } from 'lucide-react';
 
 const dummyUser = {
   name: 'Marina Silva',
@@ -52,6 +52,7 @@ const achievementsList = {
   CONSERVATION_GUARDIAN: { name: 'Guardião da Conservação', icon: <ShieldCheck size={28} />, description: 'Desbloqueie a conquista de conservação.' },
   ALL_DIFFICULTIES: { name: 'Desafiante dos Mares', icon: <Layers size={28} />, description: 'Complete quizzes em todas as dificuldades.' },
   SEVEN_SEAS_VETERAN: { name: 'Veterano dos Sete Mares', icon: <Globe2 size={28} />, description: 'Desbloqueie todas as conquistas.' },
+  MEMORY_MASTER: { name: 'Memória de Golfinho', icon: <BrainCircuit size={28} />, description: 'Encontre todos os pares no jogo da memória.' },
 };
 
 const AgentsDashboard: React.FC = () => {

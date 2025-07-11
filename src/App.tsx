@@ -7,6 +7,8 @@ import { AnimatePresence } from 'framer-motion';
 import { useUser } from './context/UserContext';
 import WelcomeModal from './components/shared/WelcomeModal';
 import AdaptiveDashboardPage from './pages/AdaptiveDashboardPage';
+import GamesPage from './pages/GamesPage';
+import MemoryGamePage from './pages/MemoryGamePage';
 
 function App() {
   const userContext = useUser();
@@ -30,7 +32,9 @@ function App() {
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<AdaptiveDashboardPage />} />
             <Route path="/animais" element={<GalleryPage />} />
-            <Route path="/quiz" element={<QuizPage />} />
+            <Route path="/jogos" element={<GamesPage />} />
+            <Route path="/jogos/quiz" element={<QuizPage />} />
+            <Route path="/jogos/memoria" element={<MemoryGamePage />} />
           </Routes>
         </AnimatePresence>
       </main>

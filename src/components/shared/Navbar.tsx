@@ -39,12 +39,12 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <NavLink
-              to="/quiz"
+              to="/jogos"
               className={({ isActive }) =>
                 isActive ? 'text-[#4A90E2] font-bold' : 'text-gray-600'
               }
             >
-              Quiz
+              Jogos
             </NavLink>
           </li>
         </ul>
@@ -84,13 +84,13 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <NavLink
-              to="/quiz"
+              to="/jogos"
               className={({ isActive }) =>
                 isActive ? 'text-[#4A90E2] font-bold' : 'text-gray-600'
               }
               onClick={() => setIsMenuOpen(false)}
             >
-              Quiz
+              Jogos
             </NavLink>
           </li>
         </ul>
